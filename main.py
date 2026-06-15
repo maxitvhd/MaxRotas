@@ -14,7 +14,7 @@ from PyQt6.QtWidgets import (
     QTableWidget, QTableWidgetItem, QTabWidget, QTextEdit, QMessageBox,
     QListWidget, QListWidgetItem, QHeaderView, QLineEdit, QScrollArea
 )
-from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtCore import Qt, QSize, QSizeF
 from PyQt6.QtGui import QFont, QIcon, QTextDocument, QPdfWriter, QPageSize
 from datetime import datetime
 
@@ -590,6 +590,26 @@ class OtimizadorRotasApp(QMainWindow):
 
         self.df_processado = pd.concat(df_saida_total, ignore_index=True)
 
+        # Ordena as rotas por dia da semana, turno e pela sequencia do vizinho mais proximo
+        ordem_dias = {
+            "Segunda": 0, "Terça": 1, "Quarta": 2, "Quinta": 3,
+            "Sexta": 4, "Sábado": 5, "Domingo": 6
+        }
+        ordem_turnos = {
+            "Manhã": 0, "Tarde": 1, "Noite": 2
+        }
+        self.df_processado['dia_num'] = self.df_processado['dia_semana'].map(ordem_dias).fillna(99)
+        self.df_processado['turno_num'] = self.df_processado['turno'].map(ordem_turnos).fillna(99)
+        
+        self.df_processado = self.df_processado.sort_values(by=['dia_num', 'turno_num', 'ordem_visita']).copy()
+        
+        # Recalcula a ordem de visita para ser contínua dentro de cada dia/turno
+        for (dia, turno), grupo in self.df_processado.groupby(['dia_semana', 'turno'], sort=False):
+            self.df_processado.loc[grupo.index, 'ordem_visita'] = range(1, len(grupo) + 1)
+            
+        # Remove as colunas auxiliares de ordenacao
+        self.df_processado = self.df_processado.drop(columns=['dia_num', 'turno_num'])
+
         self.exibir_rotas_otimizadas()
         self.gerar_links_maps_interface()
 
@@ -678,6 +698,7 @@ class OtimizadorRotasApp(QMainWindow):
             # configura o escritor de pdf
             writer = QPdfWriter(caminho)
             writer.setPageSize(QPageSize(QPageSize.PageSizeId.A4))
+            writer.setResolution(96) # resolucao ideal para visualizacao e impressao de HTML 1:1
 
             # define a ordem dos dias e turnos para ordenacao correta
             ordem_dias = {
@@ -696,17 +717,16 @@ class OtimizadorRotasApp(QMainWindow):
             html = []
             html.append("<html><head>")
             html.append("<style>")
-            html.append("body { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; color: #2c3e50; margin: 10px; }")
-            html.append(".header { background-color: #2c3e50; color: #ffffff; padding: 15px; border-radius: 6px; margin-bottom: 25px; }")
-            html.append(".header h1 { margin: 0; font-size: 22px; font-weight: bold; }")
-            html.append(".header p { margin: 5px 0 0 0; font-size: 13px; color: #bdc3c7; }")
-            html.append(".day-section { margin-top: 15px; }")
-            html.append(".day-title { color: #2c3e50; font-size: 16px; border-bottom: 2px solid #3498db; padding-bottom: 4px; margin-bottom: 12px; font-weight: bold; text-transform: uppercase; }")
-            html.append(".shift-section { margin-bottom: 20px; }")
-            html.append(".shift-title { color: #2980b9; font-size: 13px; font-weight: bold; margin-bottom: 6px; }")
-            html.append("table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }")
-            html.append("th { background-color: #34495e; color: #ffffff; font-weight: bold; text-align: left; padding: 6px; font-size: 11px; border: 1px solid #34495e; }")
-            html.append("td { padding: 6px; font-size: 10px; border: 1px solid #bdc3c7; }")
+            html.append("body { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; color: #2c3e50; margin: 0; }")
+            html.append(".header { background-color: #2c3e50; color: #ffffff; padding: 15pt; border-radius: 6pt; margin-bottom: 25pt; }")
+            html.append(".header h1 { margin: 0; font-size: 22pt; font-weight: bold; }")
+            html.append(".header p { margin: 5pt 0 0 0; font-size: 13pt; color: #bdc3c7; }")
+            html.append(".day-section { margin-top: 15pt; }")
+            html.append(".day-title { color: #2c3e50; font-size: 16pt; border-bottom: 2pt solid #3498db; padding-bottom: 4pt; margin-bottom: 12pt; font-weight: bold; text-transform: uppercase; }")
+            html.append(".shift-section { margin-bottom: 20pt; }")
+            html.append(".shift-title { color: #2980b9; font-size: 13pt; font-weight: bold; margin-bottom: 6pt; }")
+            html.append("th { background-color: #34495e; color: #ffffff; font-weight: bold; text-align: left; padding: 6pt; font-size: 11pt; border: 1px solid #34495e; }")
+            html.append("td { padding: 6pt; font-size: 10pt; border: 1px solid #bdc3c7; }")
             html.append(".alt-row { background-color: #f8f9fa; }")
             html.append(".text-center { text-align: center; }")
             html.append(".page-break { page-break-before: always; }")
@@ -749,13 +769,14 @@ class OtimizadorRotasApp(QMainWindow):
 
                     html.append('<div class="shift-section">')
                     html.append(f'<div class="shift-title">Turno: {turno} ({len(df_turno)} Clientes)</div>')
-                    html.append('<table>')
+                    # Usando width="100%" na tag da tabela para o PyQt esticar corretamente
+                    html.append('<table width="100%">')
                     html.append('<thead><tr>')
-                    html.append('<th style="width: 8%; text-align: center;">Seq</th>')
-                    html.append('<th style="width: 25%;">Cliente</th>')
-                    html.append('<th style="width: 45%;">Endereço</th>')
-                    html.append('<th style="width: 12%;">CEP</th>')
-                    html.append('<th style="width: 10%;">Grupo</th>')
+                    html.append('<th width="8%" style="text-align: center;">Seq</th>')
+                    html.append('<th width="25%">Cliente</th>')
+                    html.append('<th width="45%">Endereço</th>')
+                    html.append('<th width="12%">CEP</th>')
+                    html.append('<th width="10%">Grupo</th>')
                     html.append('</tr></thead><tbody>')
 
                     for idx_row, (_, row) in enumerate(df_turno.iterrows()):
@@ -789,6 +810,10 @@ class OtimizadorRotasApp(QMainWindow):
 
             # renderiza e salva o PDF
             doc = QTextDocument()
+            # Define o tamanho do documento com base na largura da página em pixels
+            margem = 48 # margem de 0.5 polegadas (48 pixels a 96 DPI)
+            doc.setTextWidth(writer.width() - 2 * margem)
+            
             doc.setHtml("".join(html))
             doc.print(writer)
             
