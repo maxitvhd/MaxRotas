@@ -638,5 +638,49 @@
     "AVENIDA CAMPANELLA, 136, Brasil, CEP 08220-830": {
         "lat": -23.467000000000002,
         "lon": -46.629200000000004
+    },
+    "Av. Paulista, 1000, Brasil, CEP 01310-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "Rua Augusta, 500, Brasil, CEP 01305-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "Av. Brigadeiro Luís Antônio, 1200, Brasil, CEP 01317-001": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "Rua Pamplona, 300, Brasil, CEP 01405-001": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "Alameda Santos, 800, Brasil, CEP 01419-001": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "Rua Bela Cintra, 1500, Brasil, CEP 01415-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "Alameda Lorena, 200, Brasil, CEP 01424-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "Rua da Consolação, 2100, Brasil, CEP 01301-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "Av. Rebouças, 400, Brasil, CEP 05401-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "Rua Haddock Lobo, 600, Brasil, CEP 01414-001": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "Alameda Campinas, 900, Brasil, CEP 01404-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
     }
 }
