@@ -91,6 +91,7 @@ class OtimizadorRotasApp(QMainWindow):
 
         # ================= PAINEL LATERAL ESQUERDO (CONFIGURAÇÕES) =================
         painel_config = QWidget()
+        painel_config.setObjectName("painel_config")
         layout_config = QVBoxLayout(painel_config)
         layout_config.setContentsMargins(5, 5, 5, 5)
         layout_config.setSpacing(12)
@@ -842,13 +843,21 @@ class OtimizadorRotasApp(QMainWindow):
                 font-family: "Outfit", "Segoe UI", sans-serif;
                 font-size: 13px;
             }
+            QWidget#painel_config {
+                background-color: #121212;
+            }
             QGroupBox {
+                background-color: #1a1a1a;
                 border: 1px solid #2d2d2d;
                 border-radius: 8px;
                 margin-top: 15px;
                 padding-top: 15px;
                 font-weight: bold;
                 color: #3498db;
+            }
+            QLabel, QCheckBox {
+                background-color: transparent;
+                color: #e0e0e0;
             }
             QGroupBox::title {
                 subcontrol-origin: margin;
