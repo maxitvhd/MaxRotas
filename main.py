@@ -200,17 +200,27 @@ class OtimizadorRotasApp(QMainWindow):
         self.tab_rotas = QWidget()
         lyt_tab_rotas = QVBoxLayout(self.tab_rotas)
         
+        lyt_botoes_export = QHBoxLayout()
+        
         self.btn_exportar = QPushButton("Exportar Rota para Excel (.xlsx)")
         self.btn_exportar.setEnabled(False)
         self.btn_exportar.clicked.connect(self.exportar_planilha)
         self.btn_exportar.setStyleSheet("background-color: #3498db; color: white; font-weight: bold;")
+        
+        self.btn_exportar_pdf = QPushButton("Exportar Rota para PDF (.pdf)")
+        self.btn_exportar_pdf.setEnabled(False)
+        self.btn_exportar_pdf.clicked.connect(self.exportar_pdf)
+        self.btn_exportar_pdf.setStyleSheet("background-color: #e74c3c; color: white; font-weight: bold;")
+        
+        lyt_botoes_export.addWidget(self.btn_exportar)
+        lyt_botoes_export.addWidget(self.btn_exportar_pdf)
         
         self.table_rotas = QTableWidget()
         self.table_rotas.setColumnCount(7)
         self.table_rotas.setHorizontalHeaderLabels(["Dia", "Turno", "Ordem", "Nome", "Endereço", "CEP", "Grupo"])
         self.table_rotas.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
         
-        lyt_tab_rotas.addWidget(self.btn_exportar)
+        lyt_tab_rotas.addLayout(lyt_botoes_export)
         lyt_tab_rotas.addWidget(self.table_rotas)
         self.tabs.addTab(self.tab_rotas, "Rotas Otimizadas")
 
@@ -389,7 +399,7 @@ class OtimizadorRotasApp(QMainWindow):
 
         self.txt_logs.clear()
         self.list_mapas.clear()
-        self.log("=== Iniciando Otimização de Rotas ===")
+        self.log("LOG : 1 iniciando otimização de rotas - ")
 
         # Obter configurações da Interface
         turnos = []
@@ -416,7 +426,7 @@ class OtimizadorRotasApp(QMainWindow):
             df_filt['status_limpo'] = df_filt['status'].astype(str).str.strip().str.lower()
             bloqueados = df_filt['status_limpo'].isin(['bloqueado', 'inativo', 'n', 'nao', 'false', '0'])
             df_filt = df_filt[~bloqueados].copy()
-            self.log(f"Filtro: {bloqueados.sum()} clientes bloqueados/inativos foram excluídos.")
+            self.log(f"LOG : 2 filtrando inativos e validando CEPs ({bloqueados.sum()} inativos excluídos) - ")
 
         # Validação extra de CEPs
         df_filt['cep'] = df_filt['cep'].astype(str).str.strip()
@@ -442,7 +452,7 @@ class OtimizadorRotasApp(QMainWindow):
                 cache = {}
 
         # Geocodificação
-        self.log(f"Georreferenciando {len(df_filt)} clientes...")
+        self.log(f"LOG : 3 consultando coordenadas e georreferenciando {len(df_filt)} clientes - ")
         latitudes = []
         longitudes = []
         total_passos = len(df_filt)
@@ -507,7 +517,7 @@ class OtimizadorRotasApp(QMainWindow):
         n_clusters = int(np.ceil(total_ativos / capacidade))
         if n_clusters < 1: n_clusters = 1
 
-        self.log(f"Agrupando clientes em {n_clusters} clusters (max: {capacidade} por dia/turno)...")
+        self.log(f"LOG : 4 agrupando clientes em {n_clusters} clusters com KMeans (max: {capacidade} por dia) - ")
 
         if HAS_SKLEARN and total_ativos >= n_clusters:
             coords = df_filt[['latitude', 'longitude']].values
@@ -518,6 +528,7 @@ class OtimizadorRotasApp(QMainWindow):
             df_filt['cluster'] = [i // capacidade for i in range(len(df_filt))]
 
         # Roteamento e ordenamento fino
+        self.log("LOG : 5 ordenando rotas por proximidade e priorização - ")
         df_saida_total = []
         clusters_list = sorted(df_filt['cluster'].unique())
 
@@ -527,12 +538,7 @@ class OtimizadorRotasApp(QMainWindow):
             # Calendário
             dia_index = idx_c % len(dias)
             dia_atribuido = dias[dia_index]
-
-            turno_index = (idx_c // len(dias)) % len(turnos)
-            turno_atribuido = turnos[turno_index]
-
             df_c['dia_semana'] = dia_atribuido
-            df_c['turno'] = turno_atribuido
 
             # Priorização de grupos
             palavras_prioritarias = [x.strip().lower() for x in self.txt_prioridade.text().split(",") if x.strip()]
@@ -562,7 +568,24 @@ class OtimizadorRotasApp(QMainWindow):
                 atual = prox
 
             df_c = df_c.iloc[indices_ordenados].copy()
-            df_c['ordem_visita'] = range(1, len(df_c) + 1)
+            
+            # Distribuindo clientes nos turnos de forma balanceada
+            n_clientes = len(df_c)
+            n_turnos = len(turnos)
+            base_size = n_clientes // n_turnos
+            remainder = n_clientes % n_turnos
+            
+            shift_assignments = []
+            order_assignments = []
+            
+            for i, turno in enumerate(turnos):
+                size = base_size + (1 if i < remainder else 0)
+                for order in range(1, size + 1):
+                    shift_assignments.append(turno)
+                    order_assignments.append(order)
+            
+            df_c['turno'] = shift_assignments
+            df_c['ordem_visita'] = order_assignments
             df_saida_total.append(df_c)
 
         self.df_processado = pd.concat(df_saida_total, ignore_index=True)
@@ -570,8 +593,9 @@ class OtimizadorRotasApp(QMainWindow):
         self.exibir_rotas_otimizadas()
         self.gerar_links_maps_interface()
 
-        self.log("\n=== Otimização concluída com sucesso! ===")
+        self.log("LOG : 8 otimização concluída com sucesso - ")
         self.btn_exportar.setEnabled(True)
+        self.btn_exportar_pdf.setEnabled(True)
         self.tabs.setCurrentIndex(1) # Muda para aba de rotas
 
     def exibir_rotas_otimizadas(self):
@@ -588,6 +612,7 @@ class OtimizadorRotasApp(QMainWindow):
             self.table_rotas.setItem(i, 6, QTableWidgetItem(str(row['grupo'])))
 
     def gerar_links_maps_interface(self):
+        self.log("LOG : 7 gerando links de navegação para o Google Maps - ")
         for (dia, turno), grupo in self.df_processado.groupby(['dia_semana', 'turno']):
             coords_str = []
             for _, row in grupo.head(10).iterrows(): # Google Maps aceita idealmente 10 waypoints
@@ -634,6 +659,143 @@ class OtimizadorRotasApp(QMainWindow):
                 QMessageBox.information(self, "Sucesso", f"Relatório exportado para:\n{caminho}")
             except Exception as e:
                 QMessageBox.critical(self, "Erro ao Exportar", f"Não foi possível salvar o arquivo: {e}")
+
+    def exportar_pdf(self):
+        # verifica se possui dados para exportar
+        if self.df_processado is None or self.df_processado.empty:
+            return
+
+        # exibe caixa de dialogo para o usuario salvar o pdf
+        caminho, _ = QFileDialog.getSaveFileName(
+            self, "Exportar Relatório PDF", "rotas_otimizadas.pdf", "Documento PDF (*.pdf)"
+        )
+        if not caminho:
+            return
+
+        try:
+            self.log("LOG : 9 gerando relatório em PDF estilizado - ")
+
+            # configura o escritor de pdf
+            writer = QPdfWriter(caminho)
+            writer.setPageSize(QPageSize(QPageSize.PageSizeId.A4))
+
+            # define a ordem dos dias e turnos para ordenacao correta
+            ordem_dias = {
+                "Segunda": 0, "Terça": 1, "Quarta": 2, "Quinta": 3,
+                "Sexta": 4, "Sábado": 5, "Domingo": 6
+            }
+            ordem_turnos = {
+                "Manhã": 0, "Tarde": 1, "Noite": 2
+            }
+
+            dias_unicos = sorted(
+                self.df_processado['dia_semana'].unique(),
+                key=lambda d: ordem_dias.get(d, 99)
+            )
+
+            html = []
+            html.append("<html><head>")
+            html.append("<style>")
+            html.append("body { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; color: #2c3e50; margin: 10px; }")
+            html.append(".header { background-color: #2c3e50; color: #ffffff; padding: 15px; border-radius: 6px; margin-bottom: 25px; }")
+            html.append(".header h1 { margin: 0; font-size: 22px; font-weight: bold; }")
+            html.append(".header p { margin: 5px 0 0 0; font-size: 13px; color: #bdc3c7; }")
+            html.append(".day-section { margin-top: 15px; }")
+            html.append(".day-title { color: #2c3e50; font-size: 16px; border-bottom: 2px solid #3498db; padding-bottom: 4px; margin-bottom: 12px; font-weight: bold; text-transform: uppercase; }")
+            html.append(".shift-section { margin-bottom: 20px; }")
+            html.append(".shift-title { color: #2980b9; font-size: 13px; font-weight: bold; margin-bottom: 6px; }")
+            html.append("table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }")
+            html.append("th { background-color: #34495e; color: #ffffff; font-weight: bold; text-align: left; padding: 6px; font-size: 11px; border: 1px solid #34495e; }")
+            html.append("td { padding: 6px; font-size: 10px; border: 1px solid #bdc3c7; }")
+            html.append(".alt-row { background-color: #f8f9fa; }")
+            html.append(".text-center { text-align: center; }")
+            html.append(".page-break { page-break-before: always; }")
+            html.append("</style></head><body>")
+
+            # cabecalho do relatorio
+            data_atual = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+            html.append('<div class="header">')
+            html.append('<h1>MaxRotas - Relatório de Rotas Otimizadas</h1>')
+            html.append(f'<p>Gerado em: {data_atual} | Total de Clientes Roteirizados: {len(self.df_processado)}</p>')
+            html.append('</div>')
+
+            # helper para formatar os nomes dos dias da semana
+            def formatar_dia(d):
+                if d in ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"]:
+                    return f"{d}-feira"
+                return d
+
+            for idx_d, dia in enumerate(dias_unicos):
+                df_dia = self.df_processado[self.df_processado['dia_semana'] == dia]
+                if df_dia.empty:
+                    continue
+
+                # quebra de pagina para cada dia exceto o primeiro
+                if idx_d > 0:
+                    html.append('<div class="page-break"></div>')
+
+                html.append('<div class="day-section">')
+                html.append(f'<div class="day-title">{formatar_dia(dia)}</div>')
+
+                turnos_unicos = sorted(
+                    df_dia['turno'].unique(),
+                    key=lambda t: ordem_turnos.get(t, 99)
+                )
+
+                for turno in turnos_unicos:
+                    df_turno = df_dia[df_dia['turno'] == turno].sort_values(by='ordem_visita')
+                    if df_turno.empty:
+                        continue
+
+                    html.append('<div class="shift-section">')
+                    html.append(f'<div class="shift-title">Turno: {turno} ({len(df_turno)} Clientes)</div>')
+                    html.append('<table>')
+                    html.append('<thead><tr>')
+                    html.append('<th style="width: 8%; text-align: center;">Seq</th>')
+                    html.append('<th style="width: 25%;">Cliente</th>')
+                    html.append('<th style="width: 45%;">Endereço</th>')
+                    html.append('<th style="width: 12%;">CEP</th>')
+                    html.append('<th style="width: 10%;">Grupo</th>')
+                    html.append('</tr></thead><tbody>')
+
+                    for idx_row, (_, row) in enumerate(df_turno.iterrows()):
+                        alt_class = ' class="alt-row"' if idx_row % 2 == 1 else ''
+                        nome = str(row.get('nome', ''))
+                        
+                        # formata o endereco completo com o numero do local
+                        end = str(row.get('endereco', ''))
+                        num = str(row.get('numero', ''))
+                        if num and num.lower() != 'nan':
+                            end = f"{end}, {num}"
+                            
+                        cep = str(row.get('cep', ''))
+                        grp = str(row.get('grupo', ''))
+                        ordem = str(row.get('ordem_visita', ''))
+
+                        html.append(f'<tr{alt_class}>')
+                        html.append(f'<td class="text-center">{ordem}</td>')
+                        html.append(f'<td>{nome}</td>')
+                        html.append(f'<td>{end}</td>')
+                        html.append(f'<td>{cep}</td>')
+                        html.append(f'<td>{grp}</td>')
+                        html.append('</tr>')
+
+                    html.append('</tbody></table>')
+                    html.append('</div>') # fecha shift-section
+
+                html.append('</div>') # fecha day-section
+
+            html.append('</body></html>')
+
+            # renderiza e salva o PDF
+            doc = QTextDocument()
+            doc.setHtml("".join(html))
+            doc.print(writer)
+            
+            self.log(f"LOG : 10 pdf exportado com sucesso para {caminho} - ")
+            QMessageBox.information(self, "Sucesso", f"Relatório PDF exportado com sucesso em:\n{caminho}")
+        except Exception as e:
+            QMessageBox.critical(self, "Erro ao Exportar PDF", f"Não foi possível salvar o arquivo PDF: {e}")
 
     def aplicar_tema_escuro(self):
         # Estilização moderna e refinada (Aesthetics)
