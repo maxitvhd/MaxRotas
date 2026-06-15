@@ -216,8 +216,8 @@ class OtimizadorRotasApp(QMainWindow):
         lyt_botoes_export.addWidget(self.btn_exportar_pdf)
         
         self.table_rotas = QTableWidget()
-        self.table_rotas.setColumnCount(7)
-        self.table_rotas.setHorizontalHeaderLabels(["Dia", "Turno", "Ordem", "Nome", "Endereço", "CEP", "Grupo"])
+        self.table_rotas.setColumnCount(8)
+        self.table_rotas.setHorizontalHeaderLabels(["Dia", "Turno", "Rota", "Ordem", "Nome", "Endereço", "CEP", "Grupo"])
         self.table_rotas.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
         
         lyt_tab_rotas.addLayout(lyt_botoes_export)
@@ -586,11 +586,12 @@ class OtimizadorRotasApp(QMainWindow):
             
             df_c['turno'] = shift_assignments
             df_c['ordem_visita'] = order_assignments
+            df_c['rota'] = f"Rota {idx_c + 1}"
             df_saida_total.append(df_c)
 
         self.df_processado = pd.concat(df_saida_total, ignore_index=True)
 
-        # Ordena as rotas por dia da semana, turno e pela sequencia do vizinho mais proximo
+        # Ordena as rotas por dia da semana, turno, cluster e ordem de visita
         ordem_dias = {
             "Segunda": 0, "Terça": 1, "Quarta": 2, "Quinta": 3,
             "Sexta": 4, "Sábado": 5, "Domingo": 6
@@ -601,12 +602,8 @@ class OtimizadorRotasApp(QMainWindow):
         self.df_processado['dia_num'] = self.df_processado['dia_semana'].map(ordem_dias).fillna(99)
         self.df_processado['turno_num'] = self.df_processado['turno'].map(ordem_turnos).fillna(99)
         
-        self.df_processado = self.df_processado.sort_values(by=['dia_num', 'turno_num', 'ordem_visita']).copy()
+        self.df_processado = self.df_processado.sort_values(by=['dia_num', 'turno_num', 'cluster', 'ordem_visita']).copy()
         
-        # Recalcula a ordem de visita para ser contínua dentro de cada dia/turno
-        for (dia, turno), grupo in self.df_processado.groupby(['dia_semana', 'turno'], sort=False):
-            self.df_processado.loc[grupo.index, 'ordem_visita'] = range(1, len(grupo) + 1)
-            
         # Remove as colunas auxiliares de ordenacao
         self.df_processado = self.df_processado.drop(columns=['dia_num', 'turno_num'])
 
@@ -625,11 +622,12 @@ class OtimizadorRotasApp(QMainWindow):
         for i, row in df.iterrows():
             self.table_rotas.setItem(i, 0, QTableWidgetItem(str(row['dia_semana'])))
             self.table_rotas.setItem(i, 1, QTableWidgetItem(str(row['turno'])))
-            self.table_rotas.setItem(i, 2, QTableWidgetItem(str(row['ordem_visita'])))
-            self.table_rotas.setItem(i, 3, QTableWidgetItem(str(row['nome'])))
-            self.table_rotas.setItem(i, 4, QTableWidgetItem(str(row['endereco']) + ", " + str(row['numero'])))
-            self.table_rotas.setItem(i, 5, QTableWidgetItem(str(row['cep'])))
-            self.table_rotas.setItem(i, 6, QTableWidgetItem(str(row['grupo'])))
+            self.table_rotas.setItem(i, 2, QTableWidgetItem(str(row['rota'])))
+            self.table_rotas.setItem(i, 3, QTableWidgetItem(str(row['ordem_visita'])))
+            self.table_rotas.setItem(i, 4, QTableWidgetItem(str(row['nome'])))
+            self.table_rotas.setItem(i, 5, QTableWidgetItem(str(row['endereco']) + ", " + str(row['numero'])))
+            self.table_rotas.setItem(i, 6, QTableWidgetItem(str(row['cep'])))
+            self.table_rotas.setItem(i, 7, QTableWidgetItem(str(row['grupo'])))
 
     def gerar_links_maps_interface(self):
         self.log("LOG : 7 gerando links de navegação para o Google Maps - ")
@@ -763,46 +761,57 @@ class OtimizadorRotasApp(QMainWindow):
                 )
 
                 for turno in turnos_unicos:
-                    df_turno = df_dia[df_dia['turno'] == turno].sort_values(by='ordem_visita')
+                    df_turno = df_dia[df_dia['turno'] == turno]
                     if df_turno.empty:
                         continue
 
-                    html.append('<div class="shift-section">')
-                    html.append(f'<div class="shift-title">Turno: {turno} ({len(df_turno)} Clientes)</div>')
-                    # Usando width="100%" na tag da tabela para o PyQt esticar corretamente
-                    html.append('<table width="100%">')
-                    html.append('<thead><tr>')
-                    html.append('<th width="8%" style="text-align: center;">Seq</th>')
-                    html.append('<th width="25%">Cliente</th>')
-                    html.append('<th width="45%">Endereço</th>')
-                    html.append('<th width="12%">CEP</th>')
-                    html.append('<th width="10%">Grupo</th>')
-                    html.append('</tr></thead><tbody>')
+                    # Agrupa e ordena as rotas dentro do turno
+                    rotas_unicas = sorted(
+                        df_turno['rota'].unique(),
+                        key=lambda r: int(r.split()[-1]) if r.split()[-1].isdigit() else 99
+                    )
 
-                    for idx_row, (_, row) in enumerate(df_turno.iterrows()):
-                        alt_class = ' class="alt-row"' if idx_row % 2 == 1 else ''
-                        nome = str(row.get('nome', ''))
-                        
-                        # formata o endereco completo com o numero do local
-                        end = str(row.get('endereco', ''))
-                        num = str(row.get('numero', ''))
-                        if num and num.lower() != 'nan':
-                            end = f"{end}, {num}"
+                    for rota in rotas_unicas:
+                        df_rota = df_turno[df_turno['rota'] == rota].sort_values(by='ordem_visita')
+                        if df_rota.empty:
+                            continue
+
+                        html.append('<div class="shift-section">')
+                        html.append(f'<div class="shift-title">Turno: {turno} - {rota} ({len(df_rota)} Clientes)</div>')
+                        # Usando width="100%" na tag da tabela para o PyQt esticar corretamente
+                        html.append('<table width="100%">')
+                        html.append('<thead><tr>')
+                        html.append('<th width="8%" style="text-align: center;">Seq</th>')
+                        html.append('<th width="25%">Cliente</th>')
+                        html.append('<th width="45%">Endereço</th>')
+                        html.append('<th width="12%">CEP</th>')
+                        html.append('<th width="10%">Grupo</th>')
+                        html.append('</tr></thead><tbody>')
+
+                        for idx_row, (_, row) in enumerate(df_rota.iterrows()):
+                            alt_class = ' class="alt-row"' if idx_row % 2 == 1 else ''
+                            nome = str(row.get('nome', ''))
                             
-                        cep = str(row.get('cep', ''))
-                        grp = str(row.get('grupo', ''))
-                        ordem = str(row.get('ordem_visita', ''))
+                            # formata o endereco completo com o numero do local
+                            end = str(row.get('endereco', ''))
+                            num = str(row.get('numero', ''))
+                            if num and num.lower() != 'nan':
+                                end = f"{end}, {num}"
+                                
+                            cep = str(row.get('cep', ''))
+                            grp = str(row.get('grupo', ''))
+                            ordem = str(row.get('ordem_visita', ''))
 
-                        html.append(f'<tr{alt_class}>')
-                        html.append(f'<td class="text-center">{ordem}</td>')
-                        html.append(f'<td>{nome}</td>')
-                        html.append(f'<td>{end}</td>')
-                        html.append(f'<td>{cep}</td>')
-                        html.append(f'<td>{grp}</td>')
-                        html.append('</tr>')
+                            html.append(f'<tr{alt_class}>')
+                            html.append(f'<td class="text-center">{ordem}</td>')
+                            html.append(f'<td>{nome}</td>')
+                            html.append(f'<td>{end}</td>')
+                            html.append(f'<td>{cep}</td>')
+                            html.append(f'<td>{grp}</td>')
+                            html.append('</tr>')
 
-                    html.append('</tbody></table>')
-                    html.append('</div>') # fecha shift-section
+                        html.append('</tbody></table>')
+                        html.append('</div>') # fecha shift-section
 
                 html.append('</div>') # fecha day-section
 
