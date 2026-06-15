@@ -682,5 +682,793 @@
     "Alameda Campinas, 900, Brasil, CEP 01404-000": {
         "lat": -20.3582941,
         "lon": -40.3066068
+    },
+    "RUA CABOCLOS, 563, Brasil, CEP 08615-190": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R PILAR DO SUL, 115, Brasil, CEP 08420-600": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA SAO MIGUEL, 2104, Brasil, CEP 03620-001": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  PIRAJU, 499, Brasil, CEP 08577-770": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  FERDINANDO JUNGERS, 264, Brasil, CEP 08940-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  BARAO DE MAUA, 4460, Brasil, CEP 09330-150": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  CAVALHEIRO NAMI JAFET, 343, Brasil, CEP 08770-040": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA GENERAL FRANCISCO GLICERIO, 1355, Brasil, CEP 08674-003": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  RICIERI JOSE MARCATTO, 975, Brasil, CEP 08810-020": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  OLEGARIO PAIVA, 565, Brasil, CEP 08780-040": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R  ARACOIABA, 310, Brasil, CEP 08571-840": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV SHOZO SAKAI, 1647, Brasil, CEP 08743-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  PRESIDENTE GENERAL DUTRA, 100, Brasil, CEP 08771-200": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA QUINZE DE NOVEMBRO, 107, Brasil, CEP 08500-405": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA OTAVIO RODRIGUES BARBOSA, 219, Brasil, CEP 08500-410": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA CORONEL CARDOSO DE SIQUEIRA, 211, Brasil, CEP 08715-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA BENJAMIN CONSTANT, 894, Brasil, CEP 08674-178": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  VINTE E SEIS DE MARCO, 187, Brasil, CEP 08562-140": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "EST  DO LAGEADO VELHO, 118, Brasil, CEP 08451-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA ANTONIO MARQUES FIGUEIRA, 1820, Brasil, CEP 08676-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  TITO TEMPORIM, 162, Brasil, CEP 08545-042": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R  DOLORES DE AQUINO, 1925, Brasil, CEP 08750-617": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R  SCHWARTZMANN, 246, Brasil, CEP 08740-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA ZEFERINO VAISSET, 8, Brasil, CEP 08820-040": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R  JOSE GALLUCCI, 281, Brasil, CEP 08750-600": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  ANCHIETA, 2141, Brasil, CEP 11250-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  GILDA, 153, Brasil, CEP 08533-210": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA NOVE DE JULHO, 1450, Brasil, CEP 08557-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA BRASIL, 1901, Brasil, CEP 08529-310": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "PRACA PADRE JOAO ALVARES, 218, Brasil, CEP 08570-059": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA CAMPOS SALES, 690, Brasil, CEP 08674-020": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV ARMANDO COLANGELO, 173, Brasil, CEP 07401-070": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  NOVE DE JULHO, 354, Brasil, CEP 08550-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  FRANCISCO RODRIGUES FILHO, 268, Brasil, CEP 08773-380": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA BARUEL, 2000, Brasil, CEP 08675-900": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  DOUTOR ASSIS RIBEIRO, 10170, Brasil, CEP 03827-001": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA BRASIL, 1460, Brasil, CEP 08560-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RODOVIA INDIO TIBIRICA, 4600, Brasil, CEP 08620-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "ESTRADA ANTONIO CORDEIRO ROSA, 840, Brasil, CEP 08581-020": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA PROFESSOR EDGAR SANTOS, 850, Brasil, CEP 03560-080": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA ARMANDO SALLES DE OLIVEIRA, 1520, Brasil, CEP 08673-115": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "ESTRADA PINHEIRINHO NOVO, 2101, Brasil, CEP 08588-640": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA TENENTE ONOFRE RODRIGUES DE AGUIAR, 551, Brasil, CEP 08770-041": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA VALENTIM MAGALHAES, 3335, Brasil, CEP 09120-410": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "PRACA SILVA TELES, 57, Brasil, CEP 08140-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "PC  FRANCISCO PEREIRA, 80, Brasil, CEP 08030-040": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA TIBURCIO DE SOUZA, 3222, Brasil, CEP 08140-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA TIBURCIO DE SOUZA, 1114, Brasil, CEP 08140-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA JOSE MARIA ALVES DE DEUS, 01, Brasil, CEP 08150-290": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  JOAO MACIEL, 2500, Brasil, CEP 08370-170": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  PIRES DO RIO, 4342, Brasil, CEP 08230-023": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA OLIVEIRA FREIRE, 480, Brasil, CEP 08080-570": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA BRAS DA ROCHA CARDOSO, 01, Brasil, CEP 08190-140": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA NORDESTINA, 3745, Brasil, CEP 08032-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV PARANAGUA, 2226, Brasil, CEP 03806-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  VALDEMAR AMARANTE, 29, Brasil, CEP 03804-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  CONDE PRATES, 111, Brasil, CEP 03122-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA ISABEL DIAS, 47, Brasil, CEP 03119-030": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA MANAIAS, 245, Brasil, CEP 03140-040": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA DAS HERAS, 470, Brasil, CEP 03144-080": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA JOSE ZAPPI, 57, Brasil, CEP 03128-140": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "ESTRADA DOS INDIOS, 431, Brasil, CEP 08588-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA MARECHAL TITO, 886, Brasil, CEP 08010-090": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA BAIA GRANDE, 707, Brasil, CEP 03202-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  OLIVEIRA FREIRE, 1189, Brasil, CEP 08080-570": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  CAPITAO MOR PERO DE GOIS, 165, Brasil, CEP 03389-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA TIBURCIO DE SOUZA, 900, Brasil, CEP 08140-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  OSVALDO VALLE CORDEIRO, 1179, Brasil, CEP 03584-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA AZEVEDO SOARES, 2700, Brasil, CEP 03322-002": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA SAPOPEMBA, 700, Brasil, CEP 09250-301": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA JOAO NERI DE CARVALHO, 567, Brasil, CEP 08021-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA MANOEL FERRAZ DE CAMPOS SALES, 542, Brasil, CEP 07500-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "PC  DOS EXPEDICIONARIOS, 120, Brasil, CEP 07500-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA JOAO MANOEL, 541, Brasil, CEP 07400-605": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  JOSE ALVES DE ALMEIDA, 195, Brasil, CEP 12350-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  CAPITAO ALBERTO AGUAIR WEISSOHN, 131, Brasil, CEP 08900-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  JOAO MANOEL, 420, Brasil, CEP 07400-610": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA CORONEL BERTOLDO, 11, Brasil, CEP 07500-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA MARIA JOSE RAMOS LEITE, 95, Brasil, CEP 08900-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  DOUTOR ADHEMAR DE BARROS, 463, Brasil, CEP 08900-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA MARIANA NAJAR, 601, Brasil, CEP 08790-610": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA DOUTOR DEODATO WERTHEIMER, 1600, Brasil, CEP 08710-430": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  HENRIQUE PERES, 2051, Brasil, CEP 08735-400": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  FRANCISCO RODRIGUES FILHO, 1586, Brasil, CEP 08773-350": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "ROD  CARVALHO PINTO, 0, Brasil, CEP 08900-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "EST DE SANTA ISABEL, 1800, Brasil, CEP 07435-180": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R  MAJOR BENJAMIN FRANCO, 555, Brasil, CEP 07400-165": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA PREFEITO JOAO PIRES FILHO, 1002, Brasil, CEP 07500-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R P  LUIZ ALENCASTRO GASPARETTO, 122, Brasil, CEP 08766-990": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  MATEO BEI, 1055, Brasil, CEP 03949-011": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  WALDEMAR CARLOS PEREIRA, 1971, Brasil, CEP 03533-003": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  HARRY DANNENBERG, 1220, Brasil, CEP 08270-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R  BIOTONICO, 1056, Brasil, CEP 08615-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA MONTE SERRAT, 1520, Brasil, CEP 03312-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA FRANCISCO ANTONIO MEIRA, 700, Brasil, CEP 08180-270": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA MARIA LUIZA AMERICANO, 250, Brasil, CEP 08275-001": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA BRASIL, 800, Brasil, CEP 08501-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  MORATO COELHO, 1458, Brasil, CEP 05417-002": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  MORRO DAS PEDRAS, 152, Brasil, CEP 08310-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R PEDRO RAMAZZANI, 85, Brasil, CEP 08381-800": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  CELSO GARCIA, 4800, Brasil, CEP 03064-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA GOVERNADOR JANIO QUADROS, 1258, Brasil, CEP 08526-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  TREZE DE MAIO, 1576, Brasil, CEP 01327-002": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA ENGENHEIRO ARMANDO ARRUDA PEREIRA, 1439, Brasil, CEP 09581-170": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "TV  FRANCISCO MANARA, 80, Brasil, CEP 08382-590": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA MIGUEL FERREIRA DE MELO, 230, Brasil, CEP 08390-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "TRAVESSEVA SOMOS TODOS IGUAIS, 768, Brasil, CEP 08343-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "PC  CATAS ALTAS, 190, Brasil, CEP 03938-140": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA WALDEMAR CARLOS PEREIRA, 523, Brasil, CEP 03533-001": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  IBITIRAMA, 1200, Brasil, CEP 03134-001": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA JOAO LOPES DE LIMA, 1026, Brasil, CEP 03976-020": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV BASSANO DEL GRAPPA, 759, Brasil, CEP 08340-420": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  LIDER, 1721, Brasil, CEP 08285-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R JECA TATU, 846, Brasil, CEP 08615-020": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "ESTRADA DAS LAGRIMAS, 2068, Brasil, CEP 04232-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "PRACA AMADEU LACERDA, 10, Brasil, CEP 03563-010": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  RODOLFO PIRANI, 679, Brasil, CEP 08310-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA DOS IMIGRANTES, 2222, Brasil, CEP 12902-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV MILTON DA ROCHA, 168, Brasil, CEP 02138-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  MARIA CURSI, 402, Brasil, CEP 03962-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  VINTE E UM DE ABRIL, 442, Brasil, CEP 18190-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  DOS NACIONALISTAS, 330, Brasil, CEP 03901-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA GOVERNADOR JANIO QUADROS, 1230, Brasil, CEP 08526-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "ESTRADA ITAQUERA GUAIANAZES, 2000, Brasil, CEP 08420-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "EST  KIZAEMON TAKEUTI, 1300, Brasil, CEP 06775-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  PERY RONCHETTI, 1800, Brasil, CEP 09771-001": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA WALDEMAR TIETZ, 538, Brasil, CEP 03589-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV ARMANDO SALES DE OLIVEIRA, 1200, Brasil, CEP 08673-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  VEREADOR NARCISO YAGUE GUIMARAES, 1000, Brasil, CEP 08780-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  DO ORATORIO, 4500, Brasil, CEP 03220-200": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA ITALO ADAMI, 1809, Brasil, CEP 08574-020": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  MARECHAL TITO, 3333, Brasil, CEP 08115-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  SAO MIGUEL, 8400, Brasil, CEP 08070-001": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  PROFESSOR FLAVIO PIRES DE CAMARGO, 850, Brasil, CEP 12951-750": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  CESAR AUGUSTO ROMARO, 24, Brasil, CEP 08062-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  DANTE GRIMELLO, 73, Brasil, CEP 12919-470": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R DOUTOR PAULO QUEIROZ, 1220, Brasil, CEP 03951-090": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  ENTRE FOLHAS, 26, Brasil, CEP 03816-150": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R SERRA DO NAVIO, 355, Brasil, CEP 03981-060": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA MIGUEL FERREIRA DE MELO, 84, Brasil, CEP 08390-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA PIO XI, 1320, Brasil, CEP 05060-001": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA DAMASIO PINTO, 1350, Brasil, CEP 08246-063": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA OXFORD, 567, Brasil, CEP 03731-120": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA GUARULHOS, 2753, Brasil, CEP 07031-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "ESTRADA DO ITAIM, 1891, Brasil, CEP 07262-160": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA WALDEMAR CARLOS PEREIRA, 341, Brasil, CEP 03533-001": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA KEMEL ADDAS, 1134, Brasil, CEP 08130-485": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA BRAZ LEME, 620, Brasil, CEP 02511-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA DOMINGOS TARROSO, 38, Brasil, CEP 04823-090": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA COMENDADOR GIL PINHEIRO, 137, Brasil, CEP 03406-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA MARIA CURSI, 414, Brasil, CEP 03962-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA DOUTOR CAMPOS MOURA, 71, Brasil, CEP 03568-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  RAGUEB CHOHFI, 7001, Brasil, CEP 08371-440": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  ITAQUERA, 6735, Brasil, CEP 08285-065": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  NAGIB FARAH MALUF, 100, Brasil, CEP 08255-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R UXI, 43, Brasil, CEP 03576-090": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "ESTRADA DOS INDIOS, 1154, Brasil, CEP 08588-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  OSVALDO VALLE CORDEIRO, 152, Brasil, CEP 03584-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  RIO DAS PEDRAS, 2118, Brasil, CEP 03452-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R  ARICA MIRIM, 63, Brasil, CEP 03680-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  RENATA, 346, Brasil, CEP 03377-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R AGENOR DE BARROS, 211, Brasil, CEP 03881-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "R  FRANCISCO ALVES, 125, Brasil, CEP 08580-190": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  JAGUARI, 72, Brasil, CEP 08693-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA NORTE E SUL, 310, Brasil, CEP 07263-600": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA EMILIA MARENGO, 140, Brasil, CEP 03336-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  DO ORATORIO, 1166, Brasil, CEP 03116-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  BARAO DE PENEDO, 102, Brasil, CEP 03179-070": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  VEREADOR ABEL FERREIRA, 2022, Brasil, CEP 03372-015": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV  ARQUITETO VILANOVA ARTIGAS, 132, Brasil, CEP 03928-240": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AV  JOSE BRUMATTI, 3528, Brasil, CEP 07161-095": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA ANTONIO LOUZADA ANTUNES, 282, Brasil, CEP 08061-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA TURMALINAS, 782, Brasil, CEP 08589-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "ESTRADA DA OLARIA, 859, Brasil, CEP 07271-360": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA PRESIDENTE COSTA E SILVA, 901, Brasil, CEP 06253-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA RIO DAS PEDRAS, 1176, Brasil, CEP 03452-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA PASTORIL DE ITAPETINGA, 533, Brasil, CEP 03729-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA CORREGO DO BOM JESUS, 407, Brasil, CEP 03933-030": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA SAPOPEMBA, 606, Brasil, CEP 09250-301": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "ESTRADA CABREUVA, 42, Brasil, CEP 06321-001": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA AGUIA DE HAIA, 1718, Brasil, CEP 03694-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA WALDEMAR CARLOS PEREIRA, 76, Brasil, CEP 03533-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA CANGAIBA, 1659, Brasil, CEP 03711-012": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA RAGUEB CHOHFI, 4831, Brasil, CEP 08380-330": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "PC  PORTO FERREIRA, 48, Brasil, CEP 03542-070": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "R  PADRE JOAO DE CASTRO E COSTA, 5, Brasil, CEP 03892-020": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AV ANTONIO ESTEVAO DE CARVALHO, 1532, Brasil, CEP 03540-100": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "RUA CARVALHO DE ARAUJO, 12, Brasil, CEP 08412-020": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RABEL BAPTISTA CAMILO, 50, Brasil, CEP 08542-010": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVDOUTOR ASSIS RIBEIRO, 5800, Brasil, CEP 03827-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVENIDA SAPOPEMBA, 15984, Brasil, CEP 03989-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "ESTRADA DO LAGEADO VELHO, 1013, Brasil, CEP 08451-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "ESTDO COPIUVA, 566, Brasil, CEP 06330-000": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "AVACADEMIA DE SAO PAULO, 195, Brasil, CEP 08121-400": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA JOAO VENTURA DOS SANTOS, 670, Brasil, CEP 06260-170": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
+    },
+    "RUA JUSTINO ALVES BATISTA, 85, Brasil, CEP 06126-120": {
+        "lat": -21.8295671,
+        "lon": -48.1550905
+    },
+    "AVENIDA ISRAEL, 700, Brasil, CEP 07847-200": {
+        "lat": -20.3582941,
+        "lon": -40.3066068
     }
 }
